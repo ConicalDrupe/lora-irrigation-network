@@ -6,6 +6,8 @@
 
 
 const int BUTTON_PIN = 0; // cpp style istead of #define
+const long interval = 5000; // poll every 5 seconds
+unsigned long lastActionTime = 0; //initializing action time
 
 // Shared state for ISR (Interrupt Service Routine)
 // Use 'volatile' to prevent compiler from caching value
@@ -33,6 +35,14 @@ void setup() {
 };
 
 void loop() {
+    // Polling
+    unsigned long currMillis = millis();
+    if (currMillis - lastActionTime >= interval) {
+        lastActionTime = currMillis;
+        Serial.println("Poll taken");
+    }
+
+    // ISR
     if (sendPacket) {
         sendPacket = false;
 
