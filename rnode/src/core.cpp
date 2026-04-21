@@ -1,3 +1,8 @@
+#include <Reticulum.h>
+#include <Identity.h>
+#include <Destination.h>
+#include <Packet.h>
+
 #include <Arduino.h>
 
 const int BUTTON_PIN = 0; // cpp style istead of #define
